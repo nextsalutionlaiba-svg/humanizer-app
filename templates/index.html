@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI → Humanizer WebApp</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        textarea { width: 100%; height: 150px; }
+        .result { margin-top: 20px; padding: 15px; border: 1px solid #ccc; background: #f9f9f9; }
+        h2 { margin-bottom: 5px; }
+        button { padding: 10px 20px; margin-top: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>AI → Humanizer WebApp</h1>
+    <form method="post" action="/process">
+        <label for="text">Enter AI-generated text:</label><br>
+        <textarea name="text" required></textarea><br>
+        <button type="submit">Humanize 🚀</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h2>Original</h2>
+        <p>{{ result.original }}</p>
+
+        <h2>Back Translated</h2>
+        <p>{{ result.back_translated }}</p>
+
+        <h2>Final Humanized</h2>
+        <p><b>{{ result.final_text }}</b></p>
+
+        <h2>Detection</h2>
+        <p>Human-like: {{ result.is_human }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
